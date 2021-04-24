@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "REDDIT_USERS")
+@Table(name = "redd-users")
 public class User {
 	
 	@Id
