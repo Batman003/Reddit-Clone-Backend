@@ -18,7 +18,10 @@ import com.reddit.application.repository.PostRepository;
 import com.reddit.application.repository.SubRedditRepository;
 import com.reddit.application.repository.UserRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class PostService {
 	
 	@Autowired

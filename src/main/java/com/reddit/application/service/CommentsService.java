@@ -74,5 +74,11 @@ public class CommentsService {
 	}
 	
 	//TODO NEED TO ADD FEATURE METHOD BELOW
-
+	public boolean containSwearWords(String comment) {
+		if(comment.contains("shit")) {
+			throw new SpringRedditException("Comment contains unacceptable language");
+		}
+		return false;
+	}
+	
 }
