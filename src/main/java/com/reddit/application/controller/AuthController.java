@@ -17,6 +17,7 @@ import com.reddit.application.dto.AuthenticationResponse;
 import com.reddit.application.dto.LoginRequest;
 import com.reddit.application.dto.RefreshTokenRequest;
 import com.reddit.application.dto.RegisterRequest;
+import com.reddit.application.exception.SpringRedditException;
 import com.reddit.application.service.AuthService;
 import com.reddit.application.service.RefreshTokenService;
 
@@ -49,7 +50,12 @@ public class AuthController {
 	
 	@GetMapping("/accountVerification/{token}")
 	public ResponseEntity<Object> verifyAccount(@PathVariable String token){
+		
+		try {
 		authService.verifyToken(token);
+		}catch(SpringRedditException se){
+			return new ResponseEntity<Object>(se.getMessage(),HttpStatus.OK);
+		}
 		return new ResponseEntity<Object>("Account activated succesfully",HttpStatus.OK);
 	}
 	

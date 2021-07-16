@@ -100,8 +100,8 @@ public class AuthService {
 	private void fetchUserAndEnable(VerificationToken verificationToken) {
 		// TODO Auto-generated method stub
 		String username = verificationToken.getUser().getUserName();
-		User user = userRepository.findByUserName(username)
-				.orElseThrow(() -> new SpringRedditException("User not found with username : " + username));
+		User user = userRepository.findByUserNameandFlag(username)
+				.orElseThrow(() -> new SpringRedditException("User not found with username or user already enable : " + username));
 		user.setEnabled(true);
 		userRepository.save(user);
 	}
